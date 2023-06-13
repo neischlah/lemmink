@@ -1,0 +1,12 @@
+{
+  "extends": "@antfu",
+  "rules": {
+    "@typescript-eslint/semi": "off",
+    "operator-linebreak": "off",
+    "comma-dangle": "off",
+    "no-cond-assign": "off",
+    "antfu/if-newline": "off",
+    "no-console": "off",
+    "@typescript-eslint/quotes": "off"
+  }
+}

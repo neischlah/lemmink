@@ -24,3 +24,7 @@ Go to `about:addons`, select Lemmink and set your home instance in the `Options`
 - Chrome support
 - Edit links in the community browser, e.g. https://browse.feddit.de/
 - Edit for user links
+
+## Credits
+
+[WebExtension Vite Starter](https://github.com/antfu/vitesse-webext)
