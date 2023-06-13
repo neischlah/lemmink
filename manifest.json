@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "Lemmink",
+  "version": "1.0",
+
+  "description": "Change Lemmy links to use your main server.",
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["lemmink.js"],
+      "run_at": "document_end"
+    }
+  ],
+
+  "options_ui": {
+    "page": "options.html"
+  },
+
+  "permissions": ["activeTab", "storage"],
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "neischlah.lemmink@example.com"
+    }
+  }
+}
