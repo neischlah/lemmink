@@ -21,14 +21,14 @@ export async function getManifest() {
       page: './dist/options/index.html',
       open_in_tab: true,
     },
-    background: isFirefox
-      ? {
-          scripts: ['dist/background/index.mjs'],
-          type: 'module',
-        }
-      : {
-          service_worker: './dist/background/index.mjs',
-        },
+    // background: isFirefox
+    //   ? {
+    //       scripts: ['dist/background/index.mjs'],
+    //       type: 'module',
+    //     }
+    //   : {
+    //       service_worker: './dist/background/index.mjs',
+    //     },
     icons: {
       16: './assets/icon-512.png',
       48: './assets/icon-512.png',

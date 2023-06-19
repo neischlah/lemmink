@@ -1,6 +1,6 @@
 {
-  "name": "vitesse-webext",
-  "displayName": "Vitesse WebExt",
+  "name": "lemmink",
+  "displayName": "Lemmink",
   "version": "0.0.1",
   "private": true,
   "packageManager": "pnpm@8.3.1",
@@ -14,7 +14,7 @@
     "dev:js": "npm run build:js -- --mode development",
     "build": "cross-env NODE_ENV=production run-s clear build:web build:prepare build:background build:js",
     "build:prepare": "esno scripts/prepare.ts",
-    "build:background": "vite build --config vite.config.background.ts",
+    "build:background": "exit 0 || vite build --config vite.config.background.ts",
     "build:web": "vite build",
     "build:js": "vite build --config vite.config.content.ts",
     "pack": "cross-env NODE_ENV=production run-p pack:*",

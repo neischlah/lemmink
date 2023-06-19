@@ -1,9 +1,10 @@
-import exclamationLink from './exclamationLink';
-import relativeChannel from './relativeChannel';
+import { decorateAll } from './common';
+import { watchDynamicChanges } from './dynamicChanges';
 
 (() => {
-  addEventListener('load', async () => {
-    relativeChannel();
-    exclamationLink();
-  });
+  const init = async () => {
+    decorateAll();
+    watchDynamicChanges();
+  };
+  document.readyState === 'complete' ? init() : addEventListener('load', init);
 })();

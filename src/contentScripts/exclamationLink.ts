@@ -1,17 +1,11 @@
-import {
-  addElementAfter,
-  getElements,
-  getLinkElement,
-  getMainInstance,
-} from './common';
+import { addLemmyLink, getElements, getMainInstance } from './common';
 
 export default function decorate() {
   const mainInstance = getMainInstance();
-  for (const link of getElements("//a[starts-with(text(), '!')]")) {
+  for (const link of getElements("//a[not(@lemminked) and starts-with(text(), '!')]")) {
     const target = getTarget(link.textContent || '');
     if (!target || target.instance === mainInstance) continue;
-    const href = `https://${mainInstance}/c/${target.channel}@${target.instance}`;
-    addElementAfter(link, getLinkElement(href));
+    addLemmyLink(link, target.channel, target.instance);
   }
 }
 

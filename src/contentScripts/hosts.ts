@@ -1,5 +1,6 @@
 export default new Set([
   'lemmy.ml',
+  'kbin.social',
   // Source for entries below: https://github.com/maltfield/awesome-lemmy-instances
   'lemmy.world',
   'beehaw.org',

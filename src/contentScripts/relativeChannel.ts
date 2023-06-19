@@ -1,28 +1,21 @@
-import {
-  addElementAfter,
-  getElements,
-  getLinkElement,
-  getMainInstance,
-} from './common';
-import lemmyHosts from './lemmyHosts';
+import { addLemmyLink, getElements, getMainInstance } from './common';
+import hosts from './hosts';
 
 export default function decorate() {
   const mainInstance = getMainInstance();
   const hostname = window.location.hostname;
   if (hostname === mainInstance) return;
-  if (!lemmyHosts.has(hostname)) {
-    console.debug(
-      'Lemmink: The current hostname is not a known Lemmy instance',
-    );
+  if (!hosts.has(hostname)) {
+    console.debug('Lemmink: The current hostname is not a known Lemmy/kbin instance');
     return;
   }
-  for (const link of getElements("//a[starts-with(@href, '/c/')]")) {
-    const matches = link.pathname.match(/^\/c\/([^/]*)@?([^/]*)/);
-    if (!matches || !matches[1]) continue;
-    const href = `https://${mainInstance}/c/${matches[1]}@${
-      matches[2] || hostname
-    }`;
-    link.setAttribute('lemminked', '');
-    addElementAfter(link, getLinkElement(href));
+  for (const link of getElements(
+    "//a[ not(@lemminked) and (starts-with(@href, '/c/') or starts-with(@href, '/m/')) ]",
+  )) {
+    const matches = link.pathname.match(/^\/[cm]\/([^/@]+)@?([^/@]*)$/);
+    if (!matches) continue;
+    const [_, channel, instance] = matches;
+    if (instance === mainInstance) continue;
+    addLemmyLink(link, channel, instance || hostname);
   }
 }
